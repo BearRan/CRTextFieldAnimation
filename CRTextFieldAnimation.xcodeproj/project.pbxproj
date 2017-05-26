@@ -13,6 +13,7 @@
 		09311E581ED7AFEE007ECD62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09311E561ED7AFEE007ECD62 /* Main.storyboard */; };
 		09311E5A1ED7AFEE007ECD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09311E591ED7AFEE007ECD62 /* Assets.xcassets */; };
 		09311E5D1ED7AFEE007ECD62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09311E5B1ED7AFEE007ECD62 /* LaunchScreen.storyboard */; };
+		4F3B0FE3659259D95EE15011 /* libPods-CRTextFieldAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		09311E591ED7AFEE007ECD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09311E5C1ED7AFEE007ECD62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09311E5E1ED7AFEE007ECD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3413C78535E879D6BC868231 /* Pods-CRTextFieldAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRTextFieldAnimation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation.debug.xcconfig"; sourceTree = "<group>"; };
+		A625728984EB168515829D60 /* Pods-CRTextFieldAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRTextFieldAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation.release.xcconfig"; sourceTree = "<group>"; };
+		E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CRTextFieldAnimation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3B0FE3659259D95EE15011 /* libPods-CRTextFieldAnimation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				09311E4C1ED7AFEE007ECD62 /* CRTextFieldAnimation */,
 				09311E4B1ED7AFEE007ECD62 /* Products */,
+				E06E6A1E58C2FE7C3FD81416 /* Pods */,
+				AAB5A56372ED3669FAEB4874 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AAB5A56372ED3669FAEB4874 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E06E6A1E58C2FE7C3FD81416 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3413C78535E879D6BC868231 /* Pods-CRTextFieldAnimation.debug.xcconfig */,
+				A625728984EB168515829D60 /* Pods-CRTextFieldAnimation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09311E611ED7AFEE007ECD62 /* Build configuration list for PBXNativeTarget "CRTextFieldAnimation" */;
 			buildPhases = (
+				9140D1F70461F985CB3D671F /* [CP] Check Pods Manifest.lock */,
 				09311E461ED7AFEE007ECD62 /* Sources */,
 				09311E471ED7AFEE007ECD62 /* Frameworks */,
 				09311E481ED7AFEE007ECD62 /* Resources */,
+				BA830BAEEA3CF989770DF766 /* [CP] Embed Pods Frameworks */,
+				85EA3B41C5E2064F2F1BEF3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,6 +172,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85EA3B41C5E2064F2F1BEF3C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9140D1F70461F985CB3D671F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA830BAEEA3CF989770DF766 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09311E461ED7AFEE007ECD62 /* Sources */ = {
@@ -273,6 +348,7 @@
 		};
 		09311E621ED7AFEE007ECD62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3413C78535E879D6BC868231 /* Pods-CRTextFieldAnimation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VT6HKJNGDV;
@@ -285,6 +361,7 @@
 		};
 		09311E631ED7AFEE007ECD62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A625728984EB168515829D60 /* Pods-CRTextFieldAnimation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VT6HKJNGDV;
