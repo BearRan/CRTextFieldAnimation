@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import <BearSkill/UIView+BearSet.h>
+#import <BearSkill/BearConstants.h>
+#import "CRTextFiled.h"
 
 @interface ViewController ()
+{
+    CRTextFiled *_crTextFiled;
+}
 
 @end
 
@@ -16,14 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self createUI];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)createUI
+{
+    self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
+    
+    _crTextFiled = [[CRTextFiled alloc] initWithMaxFrame:CGRectMake(0, 0, 213, 63)];
+    [self.view addSubview:_crTextFiled];
+    [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
-
 
 @end
