@@ -10,4 +10,6 @@
 
 @interface CRTFIconView : UIView
 
+@property (strong, nonatomic) UIImage  *iconImage;
+
 @end

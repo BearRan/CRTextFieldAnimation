@@ -8,6 +8,14 @@
 
 #import "CRTFConfirmBtn.h"
 #import "CRTextFieldDefines.h"
+#import "CRTextFieldDefines.h"
+
+@interface CRTFConfirmBtn ()
+{
+    UIImageView *_arrowImageV;
+}
+
+@end
 
 @implementation CRTFConfirmBtn
 
@@ -26,6 +34,10 @@
 {
     self.backgroundColor = CRTFBtnColor;
     self.layer.cornerRadius = self.height / 2.0;
+    
+    _arrowImageV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CRTFArrow_ICON"]];
+    [self addSubview:_arrowImageV];
+    [_arrowImageV BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CRTFConfirmBtn : UIView
+@interface CRTFConfirmBtn : UIButton
 
 @end

@@ -74,6 +74,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     self.layer.borderColor = CRTFLightColor.CGColor;
     
     _tfIconView = [[CRTFIconView alloc] initWithFrame:CGRectMake(0, 0, _tfIconViewWidth, _tfIconViewWidth)];
+    [_tfIconView setIconImage:[UIImage imageNamed:@"CRTFUser_ICON"]];
     [self addSubview:_tfIconView];
     
     _tfConfirmBtn = [[CRTFConfirmBtn alloc] initWithFrame:CGRectMake(0, 0, _confirmBtnWidth, _confirmBtnWidth)];
@@ -116,8 +117,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 #pragma mark - Event
 - (void)textFieldDidChanged:(UITextField *)tf
 {
-    NSLog(@"tf:%@", tf.text);
-    
     [tf sizeToFit];
     if (tf.width < _textFieldMinWith) {
         [tf setWidth:_textFieldMinWith];
