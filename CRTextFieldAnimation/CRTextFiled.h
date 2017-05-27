@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CRTextFiled;
+
+@protocol CRTextFiledDelegate <NSObject>
+
+- (void)CRTextFieldFrameDidChanged:(CRTextFiled *)crTextField;
+
+@end
 
 @interface CRTextFiled : UIView
 
-- (instancetype)initWithMaxFrame:(CGRect)frame;
+@property (assign, nonatomic) CGFloat maxWidth;
+@property (weak, nonatomic) id <CRTextFiledDelegate> delegate;
+
+- (instancetype)initWithMinFrame:(CGRect)frame;
 
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;

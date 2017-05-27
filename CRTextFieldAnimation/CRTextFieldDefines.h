@@ -13,6 +13,7 @@
 #define CRTFLightColor          UIColorFromHEX(0xCECECE)
 #define CRTFBtnColor            UIColorFromHEX(0x2A2A2A)
 #define CRTFTitleLabelColor     UIColorFromHEX(0x343434)
+#define CRTFTextFieldColor      UIColorFromHEX(0xEAEAEA)
 #define CRTFBorderWidth 2
 
 @interface CRTextFieldDefines : NSObject
