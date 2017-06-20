@@ -3,5 +3,5 @@
 
 target 'CRTextFieldAnimation' do
   pod ‘BearSkill’, :git => 'https://github.com/BearRan/BearSkill', :commit => '81b9c9a'
-
+  pod ‘pop’
 end

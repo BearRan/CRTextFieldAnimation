@@ -1,8 +1,10 @@
 PODS:
   - BearSkill (0.2.0)
+  - pop (1.0.9)
 
 DEPENDENCIES:
   - BearSkill (from `https://github.com/BearRan/BearSkill`, commit `81b9c9a`)
+  - pop
 
 EXTERNAL SOURCES:
   BearSkill:
@@ -16,7 +18,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BearSkill: 180b4d49cfae7466f65402eabcdb8d5a28665314
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-PODFILE CHECKSUM: e4aaf749d03267e122bb6d0d6884863523bba1c9
+PODFILE CHECKSUM: faf8484269fbb668e2392d8f580661d6a5ba2d90
 
 COCOAPODS: 1.2.1

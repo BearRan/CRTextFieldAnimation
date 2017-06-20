@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D58067558E261121A043A5838869262C'
+               BlueprintIdentifier = '0571CB194EDAB53441D2F8BD6AFB43FA'
                BlueprintName = 'Pods-CRTextFieldAnimation'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-CRTextFieldAnimation.a'>
