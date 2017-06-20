@@ -9,11 +9,11 @@
 #import "ViewController.h"
 #import <BearSkill/UIView+BearSet.h>
 #import <BearSkill/BearConstants.h>
-#import "CRTextFiled.h"
+#import "CRMysteryTextFiled.h"
 
 @interface ViewController () <CRTextFiledDelegate>
 {
-    CRTextFiled *_crTextFiled;
+    CRMysteryTextFiled *_crTextFiled;
 }
 
 @end
@@ -30,7 +30,7 @@
 {
     self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
     
-    _crTextFiled = [[CRTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63)];
+    _crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63)];
     _crTextFiled.maxWidth = 300;
     _crTextFiled.delegate = self;
     [self.view addSubview:_crTextFiled];
@@ -38,7 +38,7 @@
 }
 
 #pragma mark - CRTextFiledDelegate
-- (void)CRTextFieldFrameDidChanged:(CRTextFiled *)crTextField
+- (void)CRTextFieldFrameDidChanged:(CRMysteryTextFiled *)crTextField
 {
     [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }

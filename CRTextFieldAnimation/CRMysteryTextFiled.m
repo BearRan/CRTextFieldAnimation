@@ -1,12 +1,12 @@
 //
-//  CRTextFiled.m
+//  CRMysteryTextFiled.m
 //  CRTextFieldAnimation
 //
 //  Created by Bear on 2017/5/26.
 //  Copyright © 2017年 Bear. All rights reserved.
 //
 
-#import "CRTextFiled.h"
+#import "CRMysteryTextFiled.h"
 #import "CRTextFieldDefines.h"
 #import "CRTFIconView.h"
 #import "CRTFConfirmBtn.h"
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CRTFCaculateTypeSelfWidth,
 };
 
-@interface CRTextFiled ()
+@interface CRMysteryTextFiled ()
 {
     CRTFIconView *_tfIconView;
     CRTFConfirmBtn *_tfConfirmBtn;
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 
 @end
 
-@implementation CRTextFiled
+@implementation CRMysteryTextFiled
 
 - (instancetype)initWithMinFrame:(CGRect)frame
 {

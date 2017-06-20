@@ -13,7 +13,7 @@
 		09311E581ED7AFEE007ECD62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09311E561ED7AFEE007ECD62 /* Main.storyboard */; };
 		09311E5A1ED7AFEE007ECD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09311E591ED7AFEE007ECD62 /* Assets.xcassets */; };
 		09311E5D1ED7AFEE007ECD62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09311E5B1ED7AFEE007ECD62 /* LaunchScreen.storyboard */; };
-		09311E661ED7B178007ECD62 /* CRTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E651ED7B178007ECD62 /* CRTextFiled.m */; };
+		09311E661ED7B178007ECD62 /* CRMysteryTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E651ED7B178007ECD62 /* CRMysteryTextFiled.m */; };
 		09311E691ED7B67A007ECD62 /* CRTFIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E681ED7B67A007ECD62 /* CRTFIconView.m */; };
 		09311E6C1ED88475007ECD62 /* CRTextFieldDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */; };
 		09311E6F1ED8862F007ECD62 /* CRTFConfirmBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */; };
@@ -31,8 +31,8 @@
 		09311E591ED7AFEE007ECD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09311E5C1ED7AFEE007ECD62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09311E5E1ED7AFEE007ECD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		09311E641ED7B178007ECD62 /* CRTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTextFiled.h; sourceTree = "<group>"; };
-		09311E651ED7B178007ECD62 /* CRTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTextFiled.m; sourceTree = "<group>"; };
+		09311E641ED7B178007ECD62 /* CRMysteryTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRMysteryTextFiled.h; sourceTree = "<group>"; };
+		09311E651ED7B178007ECD62 /* CRMysteryTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRMysteryTextFiled.m; sourceTree = "<group>"; };
 		09311E671ED7B67A007ECD62 /* CRTFIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTFIconView.h; sourceTree = "<group>"; };
 		09311E681ED7B67A007ECD62 /* CRTFIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTFIconView.m; sourceTree = "<group>"; };
 		09311E6A1ED88475007ECD62 /* CRTextFieldDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTextFieldDefines.h; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 				09311E511ED7AFEE007ECD62 /* AppDelegate.m */,
 				09311E531ED7AFEE007ECD62 /* ViewController.h */,
 				09311E541ED7AFEE007ECD62 /* ViewController.m */,
-				09311E641ED7B178007ECD62 /* CRTextFiled.h */,
-				09311E651ED7B178007ECD62 /* CRTextFiled.m */,
+				09311E641ED7B178007ECD62 /* CRMysteryTextFiled.h */,
+				09311E651ED7B178007ECD62 /* CRMysteryTextFiled.m */,
 				09311E671ED7B67A007ECD62 /* CRTFIconView.h */,
 				09311E681ED7B67A007ECD62 /* CRTFIconView.m */,
 				09311E6D1ED8862F007ECD62 /* CRTFConfirmBtn.h */,
@@ -249,7 +249,7 @@
 				09311E691ED7B67A007ECD62 /* CRTFIconView.m in Sources */,
 				09311E551ED7AFEE007ECD62 /* ViewController.m in Sources */,
 				09311E521ED7AFEE007ECD62 /* AppDelegate.m in Sources */,
-				09311E661ED7B178007ECD62 /* CRTextFiled.m in Sources */,
+				09311E661ED7B178007ECD62 /* CRMysteryTextFiled.m in Sources */,
 				09311E4F1ED7AFEE007ECD62 /* main.m in Sources */,
 				09311E6F1ED8862F007ECD62 /* CRTFConfirmBtn.m in Sources */,
 				09311E6C1ED88475007ECD62 /* CRTextFieldDefines.m in Sources */,

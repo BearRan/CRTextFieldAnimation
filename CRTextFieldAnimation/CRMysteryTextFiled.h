@@ -1,5 +1,5 @@
 //
-//  CRTextFiled.h
+//  CRMysteryTextFiled.h
 //  CRTextFieldAnimation
 //
 //  Created by Bear on 2017/5/26.
@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CRTextFiled;
+@class CRMysteryTextFiled;
 
 @protocol CRTextFiledDelegate <NSObject>
 
-- (void)CRTextFieldFrameDidChanged:(CRTextFiled *)crTextField;
+- (void)CRTextFieldFrameDidChanged:(CRMysteryTextFiled *)crTextField;
 
 @end
 
-@interface CRTextFiled : UIView
+@interface CRMysteryTextFiled : UIView
 
 @property (assign, nonatomic) CGFloat maxWidth;
 @property (weak, nonatomic) id <CRTextFiledDelegate> delegate;
