@@ -10,6 +10,7 @@
 #import "CRTextFieldDefines.h"
 #import "CRTFIconView.h"
 #import "CRTFConfirmBtn.h"
+#import <POP/POP.h>
 
 typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CRTFCaculateTypeTFMinWidth,
@@ -48,6 +49,11 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     if (self) {
         [self initPara];
         [self createUI];
+        
+        __weak typeof(self) weakSelf = self;
+        [BearConstants delayAfter:2.0 dealBlock:^{
+            [weakSelf iconViewFadeOutAniamtion];
+        }];
     }
     
     return self;
@@ -166,6 +172,16 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     
     _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
     _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
+}
+
+#pragma mark - Animation
+- (void)iconViewFadeOutAniamtion
+{
+    POPBasicAnimation *basicAniamtion = [POPBasicAnimation animation];
+    basicAniamtion.property = [POPAnimatableProperty propertyWithName:kPOPLayerPositionX];
+    basicAniamtion.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    basicAniamtion.toValue = @(self.width);
+    [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
 }
 
 @end
