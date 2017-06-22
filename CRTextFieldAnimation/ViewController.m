@@ -30,8 +30,7 @@
 {
     self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
     
-    _crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63)];
-    _crTextFiled.maxWidth = 300;
+    _crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
     _crTextFiled.delegate = self;
     [self.view addSubview:_crTextFiled];
     [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];

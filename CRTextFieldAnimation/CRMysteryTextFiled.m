@@ -36,24 +36,29 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CGFloat _textFieldMaxWith;
     CGFloat _textFieldMinWith;
     CGFloat _minWidth;
+    CGFloat _maxWidth;
 }
 
 @end
 
 @implementation CRMysteryTextFiled
 
-- (instancetype)initWithMinFrame:(CGRect)frame
+- (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth
 {
     self = [super initWithFrame:frame];
     
     if (self) {
+        
+        _minWidth = self.width;
+        _maxWidth = maxWidth;
+        
         [self initPara];
         [self createUI];
         
-        __weak typeof(self) weakSelf = self;
-        [BearConstants delayAfter:2.0 dealBlock:^{
-            [weakSelf iconViewFadeOutAniamtion];
-        }];
+//        __weak typeof(self) weakSelf = self;
+//        [BearConstants delayAfter:2.0 dealBlock:^{
+//            [weakSelf iconViewFadeOutAniamtion];
+//        }];
     }
     
     return self;
@@ -68,9 +73,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     _tfIconViewWidth = self.height;
     _confirmBtnWidth = 34 * _ratioX;
     _textFieldHeight = 30 * _ratioY;
-    
-    _minWidth = self.width;
-    self.maxWidth = self.width;
 }
 
 - (void)createUI
@@ -103,6 +105,9 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [self addSubview:_textField];
     
     [UIView BearV2AutoLayViewArray:(NSMutableArray *)@[_titleLabel, _textField] layoutAxis:kLAYOUT_AXIS_Y alignmentType:kSetAlignmentType_Idle alignmentOffDis:0 gapAray:@[@7, @2, @5]];
+    
+    _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
+    _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
 }
 
 #pragma mark - RelayUI
@@ -148,7 +153,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
             
         case CRTFCaculateTypeTFMaxWidth:
         {
-            resultValue = self.maxWidth - leftNeedWidth - rightNeedWidth;
+            resultValue = _maxWidth - leftNeedWidth - rightNeedWidth;
         }
             break;
             
@@ -163,15 +168,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     }
     
     return resultValue;
-}
-
-#pragma mark - Setter & Getter
-- (void)setMaxWidth:(CGFloat)maxWidth
-{
-    _maxWidth = maxWidth;
-    
-    _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
-    _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
 }
 
 #pragma mark - Animation

@@ -17,10 +17,9 @@
 
 @interface CRMysteryTextFiled : UIView
 
-@property (assign, nonatomic) CGFloat maxWidth;
 @property (weak, nonatomic) id <CRTextFiledDelegate> delegate;
 
-- (instancetype)initWithMinFrame:(CGRect)frame;
+- (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
 
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
