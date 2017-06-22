@@ -11,6 +11,7 @@
 #import "CRTFIconView.h"
 #import "CRTFConfirmBtn.h"
 #import <POP/POP.h>
+#import "CRMysteryTFAndTitleView.h"
 
 typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CRTFCaculateTypeTFMinWidth,
@@ -18,12 +19,11 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CRTFCaculateTypeSelfWidth,
 };
 
-@interface CRMysteryTextFiled ()
+@interface CRMysteryTextFiled () <CRMysteryTFAndTitleViewDelegate>
 {
     CRTFIconView *_tfIconView;
     CRTFConfirmBtn *_tfConfirmBtn;
-    UILabel *_titleLabel;
-    UITextField *_textField;
+    CRMysteryTFAndTitleView *_mysteryTFAndTitleView;
     
     CGFloat _gapX;
     CGFloat _ratioX;
@@ -33,8 +33,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CGFloat _confirmBtnWidth;
     CGFloat _textFieldHeight;
     
-    CGFloat _textFieldMaxWith;
-    CGFloat _textFieldMinWith;
     CGFloat _minWidth;
     CGFloat _maxWidth;
 }
@@ -90,28 +88,12 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
     
     
+    CGFloat textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
+    CGFloat textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
     
-    _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
-    _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
-    
-    
-    
-    _titleLabel = [UILabel new];
-    _titleLabel.text = @"Name";
-    _titleLabel.font = [UIFont systemFontOfSize:10];
-    _titleLabel.textColor = CRTFTitleLabelColor;
-    _titleLabel.textAlignment = NSTextAlignmentLeft;
-    [_titleLabel sizeToFit];
-    [_titleLabel setX:_tfIconView.maxX + _gapX];
-    [_titleLabel setMaxX_DontMoveMinX:_tfConfirmBtn.x - _gapX];
-    [self addSubview:_titleLabel];
-    
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(_titleLabel.x, 0, _textFieldMinWith, _textFieldHeight)];
-    _textField.textColor = CRTFTextFieldColor;
-    [_textField addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];
-    [self addSubview:_textField];
-    
-    [UIView BearV2AutoLayViewArray:(NSMutableArray *)@[_titleLabel, _textField] layoutAxis:kLAYOUT_AXIS_Y alignmentType:kSetAlignmentType_Idle alignmentOffDis:0 gapAray:@[@7, @2, @5]];
+    _mysteryTFAndTitleView = [[CRMysteryTFAndTitleView alloc] initWithMinFrame:CGRectMake(_tfIconView.maxX + _gapX, 0, textFieldMinWith, self.height) maxWidth:textFieldMaxWith];
+    _mysteryTFAndTitleView.delegate = self;
+    [self addSubview:_mysteryTFAndTitleView];
 }
 
 #pragma mark - RelayUI
@@ -130,18 +112,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 }
 
 #pragma mark - Event
-- (void)textFieldDidChanged:(UITextField *)tf
-{
-    [tf sizeToFit];
-    if (tf.width < _textFieldMinWith) {
-        [tf setWidth:_textFieldMinWith];
-    }else if (tf.width > _textFieldMaxWith) {
-        [tf setWidth:_textFieldMaxWith];
-    }
-    
-    [self relayUI];
-}
-
 - (CGFloat)caculateParaWithType:(CRTFCaculateType)type
 {
     CGFloat resultValue = 0;
@@ -163,7 +133,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
             
         case CRTFCaculateTypeSelfWidth:
         {
-            resultValue = _textField.width + leftNeedWidth + rightNeedWidth;
+            resultValue = _mysteryTFAndTitleView.width + leftNeedWidth + rightNeedWidth;
         }
             break;
             
@@ -172,6 +142,12 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     }
     
     return resultValue;
+}
+
+#pragma mark - CRMysteryTFAndTitleViewDelegate
+- (void)mysteryTFAndTitleViewFrameDidChanged:(CRMysteryTFAndTitleView *)mysteryTFAndTitleView
+{
+    [self relayUI];
 }
 
 #pragma mark - Animation

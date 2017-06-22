@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CRMysteryTFAndTitleView;
+
+@protocol CRMysteryTFAndTitleViewDelegate <NSObject>
+
+- (void)mysteryTFAndTitleViewFrameDidChanged:(CRMysteryTFAndTitleView *)mysteryTFAndTitleView;
+
+@end
 
 @interface CRMysteryTFAndTitleView : UIView
+
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UITextField *textField;
+@property (weak, nonatomic) id <CRMysteryTFAndTitleViewDelegate> delegate;
+
+- (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
 
 @end
