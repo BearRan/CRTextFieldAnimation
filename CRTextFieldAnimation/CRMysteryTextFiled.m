@@ -89,6 +89,13 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [self addSubview:_tfConfirmBtn];
     _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
     
+    
+    
+    _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
+    _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
+    
+    
+    
     _titleLabel = [UILabel new];
     _titleLabel.text = @"Name";
     _titleLabel.font = [UIFont systemFontOfSize:10];
@@ -99,15 +106,12 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [_titleLabel setMaxX_DontMoveMinX:_tfConfirmBtn.x - _gapX];
     [self addSubview:_titleLabel];
     
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(_titleLabel.x, 0, _titleLabel.width, _textFieldHeight)];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(_titleLabel.x, 0, _textFieldMinWith, _textFieldHeight)];
     _textField.textColor = CRTFTextFieldColor;
     [_textField addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];
     [self addSubview:_textField];
     
     [UIView BearV2AutoLayViewArray:(NSMutableArray *)@[_titleLabel, _textField] layoutAxis:kLAYOUT_AXIS_Y alignmentType:kSetAlignmentType_Idle alignmentOffDis:0 gapAray:@[@7, @2, @5]];
-    
-    _textFieldMaxWith = [self caculateParaWithType:CRTFCaculateTypeTFMaxWidth];
-    _textFieldMinWith = [self caculateParaWithType:CRTFCaculateTypeTFMinWidth];
 }
 
 #pragma mark - RelayUI
