@@ -11,7 +11,6 @@
 #import "CRTFIconView.h"
 #import "CRTFConfirmBtn.h"
 #import <POP/POP.h>
-#import "CRMysteryTFAndTitleView.h"
 
 typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CRTFCaculateTypeTFMinWidth,
@@ -23,7 +22,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 {
     CRTFIconView *_tfIconView;
     CRTFConfirmBtn *_tfConfirmBtn;
-    CRMysteryTFAndTitleView *_mysteryTFAndTitleView;
     
     CGFloat _gapX;
     CGFloat _ratioX;
@@ -79,6 +77,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [self addSubview:_tfIconView];
     
     _tfConfirmBtn = [[CRTFConfirmBtn alloc] initWithFrame:CGRectMake(0, 0, _confirmBtnWidth, _confirmBtnWidth)];
+    [_tfConfirmBtn addTarget:self action:@selector(confirmBtnEvent) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_tfConfirmBtn];
     _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
     
@@ -137,6 +136,14 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     }
     
     return resultValue;
+}
+
+#pragma mark - Event
+- (void)confirmBtnEvent
+{
+    if ([_delegate respondsToSelector:@selector(CRTextFieldDidClickConfirmBtn:)]) {
+        [_delegate CRTextFieldDidClickConfirmBtn:self];
+    }
 }
 
 #pragma mark - CRMysteryTFAndTitleViewDelegate

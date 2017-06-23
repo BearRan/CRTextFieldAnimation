@@ -47,6 +47,13 @@
     }
 }
 
+- (void)CRTextFieldDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField
+{
+    if ([_delegate respondsToSelector:@selector(CRMysteryTFContentViewDidClickConfirmBtn:)]) {
+        [_delegate CRMysteryTFContentViewDidClickConfirmBtn:crTextField];
+    }
+}
+
 #pragma mark - Setter & Getter
 - (void)setCrMysteryTFModels:(NSMutableArray<CRMysteryTFModel *> *)crMysteryTFModels
 {

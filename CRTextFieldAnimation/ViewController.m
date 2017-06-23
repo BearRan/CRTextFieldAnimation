@@ -52,4 +52,9 @@
     [crMysteryTFContentView BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
 
+- (void)CRMysteryTFContentViewDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField
+{
+    NSLog(@"input:%@", crTextField.mysteryTFAndTitleView.textField.text);
+}
+
 @end

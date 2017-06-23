@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CRMysteryTFModel.h"
+#import "CRMysteryTFAndTitleView.h"
 @class CRMysteryTextFiled;
 
 @protocol CRTextFiledDelegate <NSObject>
 
 - (void)CRTextFieldFrameDidChanged:(CRMysteryTextFiled *)crTextField;
+- (void)CRTextFieldDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField;
 
 @end
 
@@ -20,6 +22,7 @@
 
 @property (strong, nonatomic) CRMysteryTFModel *crMysteryTFModel;
 @property (weak, nonatomic) id <CRTextFiledDelegate> delegate;
+@property (strong, nonatomic) CRMysteryTFAndTitleView *mysteryTFAndTitleView;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
 

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CRMysteryTFModel.h"
+#import "CRMysteryTextFiled.h"
 @class CRMysteryTFContentView;
 
 @protocol CRMysteryTFContentViewDelegate <NSObject>
 
 - (void)CRMysteryTFContentViewFrameDidChanged:(CRMysteryTFContentView *)crMysteryTFContentView;
+- (void)CRMysteryTFContentViewDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField;
 
 @end
 
