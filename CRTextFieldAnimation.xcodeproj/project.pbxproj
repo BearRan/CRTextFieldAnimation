@@ -18,7 +18,7 @@
 		09311E691ED7B67A007ECD62 /* CRTFIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E681ED7B67A007ECD62 /* CRTFIconView.m */; };
 		09311E6C1ED88475007ECD62 /* CRTextFieldDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */; };
 		09311E6F1ED8862F007ECD62 /* CRTFConfirmBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */; };
-		09D03A3F1EF97E2A003CA4D2 /* CRMysteryContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D03A3E1EF97E2A003CA4D2 /* CRMysteryContentView.m */; };
+		09D03A3F1EF97E2A003CA4D2 /* CRMysteryTFContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D03A3E1EF97E2A003CA4D2 /* CRMysteryTFContentView.m */; };
 		4F3B0FE3659259D95EE15011 /* libPods-CRTextFieldAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,8 @@
 		09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTextFieldDefines.m; sourceTree = "<group>"; };
 		09311E6D1ED8862F007ECD62 /* CRTFConfirmBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTFConfirmBtn.h; sourceTree = "<group>"; };
 		09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTFConfirmBtn.m; sourceTree = "<group>"; };
-		09D03A3D1EF97E2A003CA4D2 /* CRMysteryContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRMysteryContentView.h; sourceTree = "<group>"; };
-		09D03A3E1EF97E2A003CA4D2 /* CRMysteryContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRMysteryContentView.m; sourceTree = "<group>"; };
+		09D03A3D1EF97E2A003CA4D2 /* CRMysteryTFContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRMysteryTFContentView.h; sourceTree = "<group>"; };
+		09D03A3E1EF97E2A003CA4D2 /* CRMysteryTFContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRMysteryTFContentView.m; sourceTree = "<group>"; };
 		3413C78535E879D6BC868231 /* Pods-CRTextFieldAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRTextFieldAnimation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation.debug.xcconfig"; sourceTree = "<group>"; };
 		A625728984EB168515829D60 /* Pods-CRTextFieldAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRTextFieldAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-CRTextFieldAnimation/Pods-CRTextFieldAnimation.release.xcconfig"; sourceTree = "<group>"; };
 		E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CRTextFieldAnimation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +87,8 @@
 				09311E511ED7AFEE007ECD62 /* AppDelegate.m */,
 				09311E531ED7AFEE007ECD62 /* ViewController.h */,
 				09311E541ED7AFEE007ECD62 /* ViewController.m */,
-				09D03A3D1EF97E2A003CA4D2 /* CRMysteryContentView.h */,
-				09D03A3E1EF97E2A003CA4D2 /* CRMysteryContentView.m */,
+				09D03A3D1EF97E2A003CA4D2 /* CRMysteryTFContentView.h */,
+				09D03A3E1EF97E2A003CA4D2 /* CRMysteryTFContentView.m */,
 				09311E641ED7B178007ECD62 /* CRMysteryTextFiled.h */,
 				09311E651ED7B178007ECD62 /* CRMysteryTextFiled.m */,
 				09145D091EF9F7A900099DEC /* CRMysteryTFAndTitleView.h */,
@@ -258,7 +258,7 @@
 			files = (
 				09145D0B1EF9F7A900099DEC /* CRMysteryTFAndTitleView.m in Sources */,
 				09311E691ED7B67A007ECD62 /* CRTFIconView.m in Sources */,
-				09D03A3F1EF97E2A003CA4D2 /* CRMysteryContentView.m in Sources */,
+				09D03A3F1EF97E2A003CA4D2 /* CRMysteryTFContentView.m in Sources */,
 				09311E551ED7AFEE007ECD62 /* ViewController.m in Sources */,
 				09311E521ED7AFEE007ECD62 /* AppDelegate.m in Sources */,
 				09311E661ED7B178007ECD62 /* CRMysteryTextFiled.m in Sources */,

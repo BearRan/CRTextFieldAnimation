@@ -9,11 +9,11 @@
 #import "ViewController.h"
 #import <BearSkill/UIView+BearSet.h>
 #import <BearSkill/BearConstants.h>
-#import "CRMysteryTextFiled.h"
+#import "CRMysteryTFContentView.h"
 
-@interface ViewController () <CRTextFiledDelegate>
+@interface ViewController () <CRMysteryTFContentViewDelegate>
 {
-    CRMysteryTextFiled *_crTextFiled;
+    CRMysteryTFContentView *_crMysteryTFContentView;
 }
 
 @end
@@ -30,16 +30,16 @@
 {
     self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
     
-    _crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
-    _crTextFiled.delegate = self;
-    [self.view addSubview:_crTextFiled];
-    [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
+    _crMysteryTFContentView = [[CRMysteryTFContentView alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
+    _crMysteryTFContentView.delegate = self;
+    [self.view addSubview:_crMysteryTFContentView];
+    [_crMysteryTFContentView BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
 
-#pragma mark - CRTextFiledDelegate
-- (void)CRTextFieldFrameDidChanged:(CRMysteryTextFiled *)crTextField
+#pragma mark - CRMysteryTFContentViewDelegate
+- (void)CRMysteryTFContentViewFrameDidChanged:(CRMysteryTFContentView *)crMysteryTFContentView
 {
-    [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
+    [crMysteryTFContentView BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
 
 @end
