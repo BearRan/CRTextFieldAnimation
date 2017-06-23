@@ -75,12 +75,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 
 - (void)createUI
 {
-    self.layer.cornerRadius = self.height / 2.0;
-    self.layer.borderWidth = CRTFBorderWidth;
-    self.layer.borderColor = CRTFLightColor.CGColor;
-    
     _tfIconView = [[CRTFIconView alloc] initWithFrame:CGRectMake(0, 0, _tfIconViewWidth, _tfIconViewWidth)];
-    [_tfIconView setIconImage:[UIImage imageNamed:@"CRTFUser_ICON"]];
     [self addSubview:_tfIconView];
     
     _tfConfirmBtn = [[CRTFConfirmBtn alloc] initWithFrame:CGRectMake(0, 0, _confirmBtnWidth, _confirmBtnWidth)];
@@ -158,6 +153,18 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     basicAniamtion.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     basicAniamtion.toValue = @(self.width);
     [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
+}
+
+#pragma mark - Setter & Getter
+- (void)setCrMysteryTFModel:(CRMysteryTFModel *)crMysteryTFModel
+{
+    _crMysteryTFModel = crMysteryTFModel;
+    
+    if (crMysteryTFModel.iconImage) {
+        [_tfIconView setIconImage:crMysteryTFModel.iconImage];
+    }
+    
+    _mysteryTFAndTitleView.titleLabel.text = [NSString stringWithFormat:@"%@", crMysteryTFModel.titleStr];
 }
 
 @end

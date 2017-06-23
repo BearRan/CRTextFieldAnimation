@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRMysteryTFModel.h"
 @class CRMysteryTFContentView;
 
 @protocol CRMysteryTFContentViewDelegate <NSObject>
@@ -18,7 +19,9 @@
 @interface CRMysteryTFContentView : UIView
 
 @property (weak, nonatomic) id <CRMysteryTFContentViewDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
+- (void)reloadData;
 
 @end

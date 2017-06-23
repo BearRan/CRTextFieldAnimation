@@ -45,7 +45,7 @@
 - (void)createUI
 {
     _titleLabel = [UILabel new];
-    _titleLabel.text = @"Name";
+    _titleLabel.text = @" ";
     _titleLabel.font = [UIFont systemFontOfSize:10];
     _titleLabel.textColor = CRTFTitleLabelColor;
     _titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -71,6 +71,7 @@
         [tf setWidth:_maxWidth];
     }
     [self setWidth:tf.width];
+    [_titleLabel setWidth:self.width];
     
     if ([_delegate respondsToSelector:@selector(mysteryTFAndTitleViewFrameDidChanged:)]) {
         [_delegate mysteryTFAndTitleViewFrameDidChanged:self];

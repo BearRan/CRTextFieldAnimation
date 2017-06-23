@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRMysteryTFModel.h"
 @class CRMysteryTextFiled;
 
 @protocol CRTextFiledDelegate <NSObject>
@@ -17,6 +18,7 @@
 
 @interface CRMysteryTextFiled : UIView
 
+@property (strong, nonatomic) CRMysteryTFModel *crMysteryTFModel;
 @property (weak, nonatomic) id <CRTextFiledDelegate> delegate;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;

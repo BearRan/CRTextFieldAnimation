@@ -30,10 +30,20 @@
 {
     self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
     
+    NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels = [NSMutableArray new];
+    CRMysteryTFModel *crMysteryTFModel = [CRMysteryTFModel new];
+    crMysteryTFModel.titleStr = @"Name";
+    crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFUser_ICON"];
+    [crMysteryTFModels addObject:crMysteryTFModel];
+    
+    
     _crMysteryTFContentView = [[CRMysteryTFContentView alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
     _crMysteryTFContentView.delegate = self;
     [self.view addSubview:_crMysteryTFContentView];
     [_crMysteryTFContentView BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
+    
+    _crMysteryTFContentView.crMysteryTFModels = crMysteryTFModels;
+    [_crMysteryTFContentView reloadData];
 }
 
 #pragma mark - CRMysteryTFContentViewDelegate

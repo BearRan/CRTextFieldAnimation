@@ -29,10 +29,9 @@
         _minWidth = self.width;
         _maxWidth = maxWidth;
         
-        CRMysteryTextFiled *_crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
-        _crTextFiled.delegate = self;
-        [self addSubview:_crTextFiled];
-        [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
+        self.layer.cornerRadius = self.height / 2.0;
+        self.layer.borderWidth = CRTFBorderWidth;
+        self.layer.borderColor = CRTFLightColor.CGColor;
     }
     
     return self;
@@ -46,6 +45,21 @@
     if ([_delegate respondsToSelector:@selector(CRMysteryTFContentViewFrameDidChanged:)]) {
         [_delegate CRMysteryTFContentViewFrameDidChanged:self];
     }
+}
+
+#pragma mark - Setter & Getter
+- (void)setCrMysteryTFModels:(NSMutableArray<CRMysteryTFModel *> *)crMysteryTFModels
+{
+    _crMysteryTFModels = crMysteryTFModels;
+}
+
+- (void)reloadData
+{
+    CRMysteryTextFiled *_crTextFiled = [[CRMysteryTextFiled alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
+    _crTextFiled.crMysteryTFModel = _crMysteryTFModels[0];
+    _crTextFiled.delegate = self;
+    [self addSubview:_crTextFiled];
+    [_crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
 }
 
 @end
