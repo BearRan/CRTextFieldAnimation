@@ -18,6 +18,7 @@
 		09311E691ED7B67A007ECD62 /* CRTFIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E681ED7B67A007ECD62 /* CRTFIconView.m */; };
 		09311E6C1ED88475007ECD62 /* CRTextFieldDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */; };
 		09311E6F1ED8862F007ECD62 /* CRTFConfirmBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */; };
+		098865571EFD73BD000FFDA0 /* BearSeesawManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 098865561EFD73BD000FFDA0 /* BearSeesawManager.m */; };
 		09C071C51EFC9BDD00DEC037 /* CRMysteryTFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C071C41EFC9BDD00DEC037 /* CRMysteryTFModel.m */; };
 		09D03A3F1EF97E2A003CA4D2 /* CRMysteryTFContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D03A3E1EF97E2A003CA4D2 /* CRMysteryTFContentView.m */; };
 		4F3B0FE3659259D95EE15011 /* libPods-CRTextFieldAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0E2CD276EA2E3F5CA5870 /* libPods-CRTextFieldAnimation.a */; };
@@ -44,6 +45,8 @@
 		09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTextFieldDefines.m; sourceTree = "<group>"; };
 		09311E6D1ED8862F007ECD62 /* CRTFConfirmBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTFConfirmBtn.h; sourceTree = "<group>"; };
 		09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTFConfirmBtn.m; sourceTree = "<group>"; };
+		098865551EFD73BD000FFDA0 /* BearSeesawManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearSeesawManager.h; sourceTree = "<group>"; };
+		098865561EFD73BD000FFDA0 /* BearSeesawManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BearSeesawManager.m; sourceTree = "<group>"; };
 		09C071C31EFC9BDD00DEC037 /* CRMysteryTFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRMysteryTFModel.h; sourceTree = "<group>"; };
 		09C071C41EFC9BDD00DEC037 /* CRMysteryTFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRMysteryTFModel.m; sourceTree = "<group>"; };
 		09D03A3D1EF97E2A003CA4D2 /* CRMysteryTFContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRMysteryTFContentView.h; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				09311E681ED7B67A007ECD62 /* CRTFIconView.m */,
 				09311E6D1ED8862F007ECD62 /* CRTFConfirmBtn.h */,
 				09311E6E1ED8862F007ECD62 /* CRTFConfirmBtn.m */,
+				098865551EFD73BD000FFDA0 /* BearSeesawManager.h */,
+				098865561EFD73BD000FFDA0 /* BearSeesawManager.m */,
 				09311E6A1ED88475007ECD62 /* CRTextFieldDefines.h */,
 				09311E6B1ED88475007ECD62 /* CRTextFieldDefines.m */,
 				09311E561ED7AFEE007ECD62 /* Main.storyboard */,
@@ -268,6 +273,7 @@
 				09311E551ED7AFEE007ECD62 /* ViewController.m in Sources */,
 				09311E521ED7AFEE007ECD62 /* AppDelegate.m in Sources */,
 				09311E661ED7B178007ECD62 /* CRMysteryTextFiled.m in Sources */,
+				098865571EFD73BD000FFDA0 /* BearSeesawManager.m in Sources */,
 				09311E4F1ED7AFEE007ECD62 /* main.m in Sources */,
 				09311E6F1ED8862F007ECD62 /* CRTFConfirmBtn.m in Sources */,
 				09311E6C1ED88475007ECD62 /* CRTextFieldDefines.m in Sources */,

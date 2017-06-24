@@ -172,6 +172,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     }
     
     _mysteryTFAndTitleView.titleLabel.text = [NSString stringWithFormat:@"%@", crMysteryTFModel.titleStr];
+    [_mysteryTFAndTitleView cleanTextField];
 }
 
 @end

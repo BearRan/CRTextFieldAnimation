@@ -30,12 +30,7 @@
 {
     self.view.backgroundColor = UIColorFromHEX(0x1F1F1F);
     
-    NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels = [NSMutableArray new];
-    CRMysteryTFModel *crMysteryTFModel = [CRMysteryTFModel new];
-    crMysteryTFModel.titleStr = @"Name";
-    crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFUser_ICON"];
-    [crMysteryTFModels addObject:crMysteryTFModel];
-    
+    NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels = [self generateModels];
     
     _crMysteryTFContentView = [[CRMysteryTFContentView alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
     _crMysteryTFContentView.delegate = self;
@@ -44,6 +39,30 @@
     
     _crMysteryTFContentView.crMysteryTFModels = crMysteryTFModels;
     [_crMysteryTFContentView reloadData];
+}
+
+- (NSMutableArray <CRMysteryTFModel *> *)generateModels
+{
+    NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels = [NSMutableArray new];
+    
+    CRMysteryTFModel *crMysteryTFModel;
+    
+    crMysteryTFModel = [CRMysteryTFModel new];
+    crMysteryTFModel.titleStr = @"Name";
+    crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFUser_ICON"];
+    [crMysteryTFModels addObject:crMysteryTFModel];
+    
+    crMysteryTFModel = [CRMysteryTFModel new];
+    crMysteryTFModel.titleStr = @"Mail";
+    crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFMail_ICON"];
+    [crMysteryTFModels addObject:crMysteryTFModel];
+    
+    crMysteryTFModel = [CRMysteryTFModel new];
+    crMysteryTFModel.titleStr = @"Password";
+    crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFLock_ICON"];
+    [crMysteryTFModels addObject:crMysteryTFModel];
+    
+    return crMysteryTFModels;
 }
 
 #pragma mark - CRMysteryTFContentViewDelegate
@@ -55,6 +74,7 @@
 - (void)CRMysteryTFContentViewDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField
 {
     NSLog(@"input:%@", crTextField.mysteryTFAndTitleView.textField.text);
+    [_crMysteryTFContentView showNextMysteryTextFieldAnimation];
 }
 
 @end

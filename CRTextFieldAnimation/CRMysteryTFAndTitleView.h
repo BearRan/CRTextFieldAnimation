@@ -22,5 +22,6 @@
 @property (weak, nonatomic) id <CRMysteryTFAndTitleViewDelegate> delegate;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
+- (void)cleanTextField;
 
 @end

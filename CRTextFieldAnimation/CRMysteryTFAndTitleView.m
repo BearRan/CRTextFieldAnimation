@@ -61,6 +61,11 @@
     [UIView BearV2AutoLayViewArray:(NSMutableArray *)@[_titleLabel, _textField] layoutAxis:kLAYOUT_AXIS_Y alignmentType:kSetAlignmentType_Idle alignmentOffDis:0 gapAray:@[@7, @2, @5]];
 }
 
+- (void)cleanTextField
+{
+    _textField.text = @"";
+}
+
 #pragma mark - Event
 - (void)textFieldDidChanged:(UITextField *)tf
 {

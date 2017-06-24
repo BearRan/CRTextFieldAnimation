@@ -25,5 +25,6 @@
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
 - (void)reloadData;
+- (void)showNextMysteryTextFieldAnimation;
 
 @end
