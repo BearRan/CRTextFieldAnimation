@@ -89,4 +89,11 @@
     }];
 }
 
+- (void)triggerNoNextEvent:(CRMysteryTFContentView *)crMysteryTFContentView
+{
+    [crMysteryTFContentView startFinishTitleAniamtionWithString:@"Welcome" completion:^{
+        nil;
+    }];
+}
+
 @end

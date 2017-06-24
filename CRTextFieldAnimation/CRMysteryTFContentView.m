@@ -103,6 +103,10 @@
         [self addSubview:crTextFiled];
         [crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
         [_seesawManager setObject:crTextFiled withType:BearSeesawObjectTypeCurrent];
+    }else{
+        if ([_delegate respondsToSelector:@selector(triggerNoNextEvent:)]) {
+            [_delegate triggerNoNextEvent:self];
+        }
     }
 }
 
@@ -111,6 +115,7 @@
     
 }
 
+#pragma mark startTitleAniamtion
 - (void)showStartTitleAniamtionWithString:(NSString *)string completion:(void (^)())completion
 {
     [self addGestureRecognizer:_startTitleTapGR];
@@ -139,6 +144,23 @@
     _pureLabel.alpha = 1;
     [UIView animateWithDuration:0.25 animations:^{
         _pureLabel.alpha = 0;
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
+#pragma mark - finishTitleAniamtion
+- (void)startFinishTitleAniamtionWithString:(NSString *)string completion:(void (^)())completion
+{
+    _pureLabel.text = [NSString stringWithFormat:@"%@", string];
+    [_pureLabel sizeToFit];
+    [_pureLabel BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
+    _pureLabel.alpha = 0;
+    
+    [UIView animateWithDuration:0.75 animations:^{
+        _pureLabel.alpha = 1;
     } completion:^(BOOL finished) {
         if (completion) {
             completion();
