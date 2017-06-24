@@ -34,11 +34,18 @@
     
     _crMysteryTFContentView = [[CRMysteryTFContentView alloc] initWithMinFrame:CGRectMake(0, 0, 213, 63) maxWidth:300];
     _crMysteryTFContentView.delegate = self;
+    _crMysteryTFContentView.crMysteryTFModels = crMysteryTFModels;
     [self.view addSubview:_crMysteryTFContentView];
     [_crMysteryTFContentView BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
     
-    _crMysteryTFContentView.crMysteryTFModels = crMysteryTFModels;
-    [_crMysteryTFContentView reloadData];
+    [self startAniamtion];
+}
+
+- (void)startAniamtion
+{
+    [_crMysteryTFContentView showStartTitleAniamtionWithString:@"Sign Up" completion:^{
+//        [_crMysteryTFContentView reloadDataAndShowMysteryField];
+    }];
 }
 
 - (NSMutableArray <CRMysteryTFModel *> *)generateModels
@@ -53,7 +60,7 @@
     [crMysteryTFModels addObject:crMysteryTFModel];
     
     crMysteryTFModel = [CRMysteryTFModel new];
-    crMysteryTFModel.titleStr = @"Mail";
+    crMysteryTFModel.titleStr = @"Email";
     crMysteryTFModel.iconImage = [UIImage imageNamed:@"CRTFMail_ICON"];
     [crMysteryTFModels addObject:crMysteryTFModel];
     
@@ -74,7 +81,7 @@
 - (void)CRMysteryTFContentViewDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField
 {
     NSLog(@"input:%@", crTextField.mysteryTFAndTitleView.textField.text);
-    [_crMysteryTFContentView showNextMysteryTextFieldAnimation];
+    [_crMysteryTFContentView showNext];
 }
 
 @end

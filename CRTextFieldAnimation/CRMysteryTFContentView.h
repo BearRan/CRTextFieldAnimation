@@ -22,9 +22,12 @@
 
 @property (weak, nonatomic) id <CRMysteryTFContentViewDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray <CRMysteryTFModel *> *crMysteryTFModels;
+@property (strong, nonatomic) NSString  *startNoticeStr;
+@property (strong, nonatomic) NSString  *finishNoticeStr;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
-- (void)reloadData;
-- (void)showNextMysteryTextFieldAnimation;
+- (void)showStartTitleAniamtionWithString:(NSString *)string completion:(void (^)())completion;
+- (void)reloadDataAndShowMysteryField;
+- (void)showNext;
 
 @end
