@@ -15,6 +15,7 @@
 
 - (void)CRMysteryTFContentViewFrameDidChanged:(CRMysteryTFContentView *)crMysteryTFContentView;
 - (void)CRMysteryTFContentViewDidClickConfirmBtn:(CRMysteryTextFiled *)crTextField;
+- (void)didTapStartTitleEvent:(CRMysteryTFContentView *)crMysteryTFContentView;;
 
 @end
 
@@ -26,7 +27,10 @@
 @property (strong, nonatomic) NSString  *finishNoticeStr;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
+
 - (void)showStartTitleAniamtionWithString:(NSString *)string completion:(void (^)())completion;
+- (void)hideStartTitleAniamtionCompletion:(void (^)())completion;
+
 - (void)reloadDataAndShowMysteryField;
 - (void)showNext;
 

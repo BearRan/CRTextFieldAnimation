@@ -18,6 +18,7 @@
     BearSeesawManager *_seesawManager;
     NSInteger _currentIndex;
     UILabel *_pureLabel;
+    UITapGestureRecognizer *_startTitleTapGR;
 }
 
 @end
@@ -41,10 +42,10 @@
 
 - (void)initPara
 {
-    
-    _currentIndex = 0;
-    
+    _currentIndex = -1;
     _seesawManager = [[BearSeesawManager alloc] init];
+    _startTitleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapStartTitleEvent)];
+    self.userInteractionEnabled = YES;
 }
 
 - (void)createUI
@@ -85,7 +86,8 @@
 
 - (void)showNextMysteryTextFieldAnimation
 {
-    if (_currentIndex < [_crMysteryTFModels count] - 1) {
+    NSInteger tempCount = [_crMysteryTFModels count] - 1;
+    if (_currentIndex < tempCount) {
         [_seesawManager exchangeObject];
         _currentIndex++;
         
@@ -111,6 +113,8 @@
 
 - (void)showStartTitleAniamtionWithString:(NSString *)string completion:(void (^)())completion
 {
+    [self addGestureRecognizer:_startTitleTapGR];
+    
     _pureLabel.text = [NSString stringWithFormat:@"%@", string];
     [_pureLabel sizeToFit];
     [_pureLabel BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
@@ -126,6 +130,28 @@
             completion();
         }
     }];
+}
+
+- (void)hideStartTitleAniamtionCompletion:(void (^)())completion
+{
+    [self removeGestureRecognizer:_startTitleTapGR];
+    
+    _pureLabel.alpha = 1;
+    [UIView animateWithDuration:0.25 animations:^{
+        _pureLabel.alpha = 0;
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
+#pragma mark - Event
+- (void)tapStartTitleEvent
+{
+    if ([_delegate respondsToSelector:@selector(didTapStartTitleEvent:)]) {
+        [_delegate didTapStartTitleEvent:self];
+    }
 }
 
 #pragma mark - Generate
@@ -162,18 +188,23 @@
 
 - (void)reloadDataAndShowMysteryField
 {
-    CRMysteryTextFiled *crTextFiled;
-    id tempObj = [_seesawManager getObjectWithType:BearSeesawObjectTypeCurrent];
-    if ([tempObj isKindOfClass:[CRMysteryTextFiled class]]) {
-        crTextFiled = tempObj;
-        crTextFiled.crMysteryTFModel = _crMysteryTFModels[_currentIndex];
+    if (self.width == _minWidth) {
+        [self showNextMysteryTextFieldAnimation];
     }else{
-        crTextFiled = [self generateMysteryTextFieldWithModel:_crMysteryTFModels[_currentIndex]];
+        
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.25 animations:^{
+            [weakSelf setWidth:_minWidth];
+            
+            if ([_delegate respondsToSelector:@selector(CRMysteryTFContentViewFrameDidChanged:)]) {
+                [_delegate CRMysteryTFContentViewFrameDidChanged:self];
+            }
+            
+        } completion:^(BOOL finished) {
+            [weakSelf showNextMysteryTextFieldAnimation];
+        }];
+        
     }
-
-    [self addSubview:crTextFiled];
-    [crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
-    [_seesawManager setObject:crTextFiled withType:BearSeesawObjectTypeCurrent];
 }
 
 @end

@@ -43,9 +43,7 @@
 
 - (void)startAniamtion
 {
-    [_crMysteryTFContentView showStartTitleAniamtionWithString:@"Sign Up" completion:^{
-//        [_crMysteryTFContentView reloadDataAndShowMysteryField];
-    }];
+    [_crMysteryTFContentView showStartTitleAniamtionWithString:@"Sign Up" completion:nil];
 }
 
 - (NSMutableArray <CRMysteryTFModel *> *)generateModels
@@ -82,6 +80,13 @@
 {
     NSLog(@"input:%@", crTextField.mysteryTFAndTitleView.textField.text);
     [_crMysteryTFContentView showNext];
+}
+
+- (void)didTapStartTitleEvent:(CRMysteryTFContentView *)crMysteryTFContentView
+{
+    [crMysteryTFContentView hideStartTitleAniamtionCompletion:^{
+        [crMysteryTFContentView reloadDataAndShowMysteryField];
+    }];
 }
 
 @end
