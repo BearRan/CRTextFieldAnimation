@@ -73,6 +73,11 @@
 - (void)hideCurrentMysteryTextFieldAnimationCompletion:(void (^)())completion
 {
     CRMysteryTextFiled *crTextFiledCurrent = [_seesawManager getObjectWithType:BearSeesawObjectTypeCurrent];
+    
+#warning DAD Test
+    [crTextFiledCurrent fadeOutAnimation];
+    return;
+    
     [UIView animateWithDuration:2.0 animations:^{
         [crTextFiledCurrent setX:self.width];
     } completion:^(BOOL finished) {

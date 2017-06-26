@@ -178,6 +178,20 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
 }
 
+- (void)fadeOutAnimation
+{
+    UIBezierPath *maskPath = [UIBezierPath bezierPath];
+    [maskPath moveToPoint:CGPointMake(self.width / 2.0, 0)];
+    [maskPath addLineToPoint:CGPointMake(self.width, 0)];
+    [maskPath addLineToPoint:CGPointMake(self.width, self.height)];
+    [maskPath addLineToPoint:CGPointMake(self.width / 2.0, self.height)];
+    [maskPath closePath];
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
 #pragma mark - Setter & Getter
 - (void)setCrMysteryTFModel:(CRMysteryTFModel *)crMysteryTFModel
 {
