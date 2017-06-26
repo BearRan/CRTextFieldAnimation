@@ -25,6 +25,7 @@
 @property (strong, nonatomic) CRMysteryTFAndTitleView *mysteryTFAndTitleView;
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
+- (void)setCurrentWidth:(CGFloat)currentWidth;
 
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;

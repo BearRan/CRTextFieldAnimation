@@ -93,16 +93,32 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 #pragma mark - RelayUI
 - (void)relayUI
 {
+    _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
+    
+    if ([_delegate respondsToSelector:@selector(CRTextFieldFrameDidChanged:)]) {
+        [_delegate CRTextFieldFrameDidChanged:self];
+    }
+}
+
+- (void)autoChangeFrameAndRelayUI
+{
     CGFloat selfWidth = [self caculateParaWithType:CRTFCaculateTypeSelfWidth];
     
     if (selfWidth != self.width) {
         [self setWidth:selfWidth];
-        _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
-        
-        if ([_delegate respondsToSelector:@selector(CRTextFieldFrameDidChanged:)]) {
-            [_delegate CRTextFieldFrameDidChanged:self];
-        }
+        [self relayUI];
     }
+}
+
+- (void)setCurrentWidth:(CGFloat)currentWidth
+{
+    if (currentWidth > _maxWidth || currentWidth < _minWidth || currentWidth == self.width) {
+        return;
+    }
+    
+    [self setWidth:currentWidth];
+    [self relayUI];
+    
 }
 
 #pragma mark - Event
@@ -149,7 +165,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 #pragma mark - CRMysteryTFAndTitleViewDelegate
 - (void)mysteryTFAndTitleViewFrameDidChanged:(CRMysteryTFAndTitleView *)mysteryTFAndTitleView
 {
-    [self relayUI];
+    [self autoChangeFrameAndRelayUI];
 }
 
 #pragma mark - Animation

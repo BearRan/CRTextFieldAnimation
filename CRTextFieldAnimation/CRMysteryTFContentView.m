@@ -101,6 +101,7 @@
         }
         
         [self addSubview:crTextFiled];
+        [crTextFiled setCurrentWidth:self.width];
         [crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
         [_seesawManager setObject:crTextFiled withType:BearSeesawObjectTypeCurrent];
     }else{
