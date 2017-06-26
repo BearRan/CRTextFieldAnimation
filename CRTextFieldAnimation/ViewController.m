@@ -92,7 +92,10 @@
 - (void)triggerNoNextEvent:(CRMysteryTFContentView *)crMysteryTFContentView
 {
     [crMysteryTFContentView startFinishTitleAniamtionWithString:@"Welcome" completion:^{
-        nil;
+        
+        [crMysteryTFContentView reset];
+        [crMysteryTFContentView showStartTitleAniamtionWithString:@"Sign Up" completion:nil];
+        
     }];
 }
 

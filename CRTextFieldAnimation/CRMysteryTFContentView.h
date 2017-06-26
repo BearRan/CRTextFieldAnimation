@@ -36,4 +36,6 @@
 - (void)reloadDataAndShowMysteryField;
 - (void)showNext;
 
+- (void)reset;
+
 @end

@@ -104,6 +104,11 @@
         [crTextFiled setCurrentWidth:self.width];
         [crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
         [_seesawManager setObject:crTextFiled withType:BearSeesawObjectTypeCurrent];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            [crTextFiled setCurrentWidth:_minWidth];
+        }];
+        
     }else{
         if ([_delegate respondsToSelector:@selector(triggerNoNextEvent:)]) {
             [_delegate triggerNoNextEvent:self];
@@ -228,6 +233,12 @@
         }];
         
     }
+}
+
+#pragma mark - Reset
+- (void)reset
+{
+    [self initPara];
 }
 
 @end
