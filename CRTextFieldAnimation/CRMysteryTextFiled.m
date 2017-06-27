@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 {
     CRTFIconView *_tfIconView;
     CRTFConfirmBtn *_tfConfirmBtn;
+    UIView *_mainContentView;
     
     CGFloat _gapX;
     CGFloat _ratioX;
@@ -33,6 +34,10 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     
     CGFloat _minWidth;
     CGFloat _maxWidth;
+    
+    CADisplayLink *_displayLink;
+    UIBezierPath *_maskPath;
+    CAShapeLayer *_maskLayer;
 }
 
 @end
@@ -69,16 +74,24 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     _tfIconViewWidth = self.height;
     _confirmBtnWidth = 34 * _ratioX;
     _textFieldHeight = 30 * _ratioY;
+    
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkEvent)];
+    [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    _displayLink.paused = YES;
 }
 
 - (void)createUI
 {
+    _mainContentView = [[UIView alloc] initWithFrame:self.bounds];
+    _mainContentView.layer.masksToBounds = YES;
+    [self addSubview:_mainContentView];
+    
     _tfIconView = [[CRTFIconView alloc] initWithFrame:CGRectMake(0, 0, _tfIconViewWidth, _tfIconViewWidth)];
-    [self addSubview:_tfIconView];
+    [_mainContentView addSubview:_tfIconView];
     
     _tfConfirmBtn = [[CRTFConfirmBtn alloc] initWithFrame:CGRectMake(0, 0, _confirmBtnWidth, _confirmBtnWidth)];
     [_tfConfirmBtn addTarget:self action:@selector(confirmBtnEvent) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_tfConfirmBtn];
+    [_mainContentView addSubview:_tfConfirmBtn];
     _tfConfirmBtn.center = CGPointMake(self.width - _tfIconViewWidth / 2.0, self.height / 2.0);
     
     
@@ -87,7 +100,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     
     _mysteryTFAndTitleView = [[CRMysteryTFAndTitleView alloc] initWithMinFrame:CGRectMake(_tfIconView.maxX + _gapX, 0, textFieldMinWith, self.height) maxWidth:textFieldMaxWith];
     _mysteryTFAndTitleView.delegate = self;
-    [self addSubview:_mysteryTFAndTitleView];
+    [_mainContentView addSubview:_mysteryTFAndTitleView];
 }
 
 #pragma mark - RelayUI
@@ -105,7 +118,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     CGFloat selfWidth = [self caculateParaWithType:CRTFCaculateTypeSelfWidth];
     
     if (selfWidth != self.width) {
-        [self setWidth:selfWidth];
+        [self setMyWidth:selfWidth];
         [self relayUI];
     }
 }
@@ -116,9 +129,15 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
         return;
     }
     
-    [self setWidth:currentWidth];
+    [self setMyWidth:currentWidth];
     [self relayUI];
     
+}
+
+- (void)setMyWidth:(CGFloat)width
+{
+    [self setWidth:width];
+    [_mainContentView setWidth:width];
 }
 
 #pragma mark - Event
@@ -162,6 +181,12 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     }
 }
 
+- (void)displayLinkEvent
+{
+//    NSLog(@"--1 layer frame:%@", NSStringFromCGRect(_tfIconView.layer.frame));
+    [self changeMaskWithX:_tfIconView.layer.frame.origin.x];
+}
+
 #pragma mark - CRMysteryTFAndTitleViewDelegate
 - (void)mysteryTFAndTitleViewFrameDidChanged:(CRMysteryTFAndTitleView *)mysteryTFAndTitleView
 {
@@ -178,18 +203,118 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
 }
 
+/*
+- (void)test
+{
+    POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@"countdown" initializer:^(POPMutableAnimatableProperty *prop) {
+        prop.writeBlock = ^(id obj, const CGFloat values[]) {
+            UILabel *lable = (UILabel*)obj;
+            label.text = [NSString stringWithFormat:@"d:d:d",(int)values[0]/60,(int)values[0]%60,(int)(values[0]*100)0];
+        };
+        //        prop.threshold = 0.01f;
+    }];
+    POPBasicAnimation *anBasic = [POPBasicAnimation linearAnimation];   //秒表当然必须是线性的时间函数
+    anBasic.property = prop;    //自定义属性
+    anBasic.fromValue = @(0);   //从0开始
+    anBasic.toValue = @(3*60);  //180秒
+    anBasic.duration = 3*60;    //持续3分钟
+    anBasic.beginTime = CACurrentMediaTime() + 1.0f;    //延迟1秒开始
+    [label pop_addAnimation:anBasic forKey:@"countdown"];
+}
+ */
+
 - (void)fadeOutAnimation
 {
-    UIBezierPath *maskPath = [UIBezierPath bezierPath];
-    [maskPath moveToPoint:CGPointMake(self.width / 2.0, 0)];
-    [maskPath addLineToPoint:CGPointMake(self.width, 0)];
-    [maskPath addLineToPoint:CGPointMake(self.width, self.height)];
-    [maskPath addLineToPoint:CGPointMake(self.width / 2.0, self.height)];
-    [maskPath closePath];
     
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
+//    POPDecayAnimation *decayAnimation = [POPDecayAnimation animation];
+//    POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@"com.rounak.boundsX" initializer:^(POPMutableAnimatableProperty *prop) {
+//        // read value, feed data to Pop
+//        prop.readBlock = ^(id obj, CGFloat values[]) {
+//            values[0] = [obj bounds].origin.x;
+//            values[1] = [obj bounds].origin.y;
+//        };
+//        // write value, get data from Pop, and apply it to the view
+//        prop.writeBlock = ^(id obj, const CGFloat values[]) {
+//            CGRect tempBounds = [obj bounds];
+//            tempBounds.origin.x = values[0];
+//            tempBounds.origin.y = values[1];
+//            [obj setBounds:tempBounds];
+//        };
+//        // dynamics threshold
+//        prop.threshold = 0.01;
+//    }];
+//    
+//    decayAnimation.property = prop;
+//    decayAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(100, 00)];
+//    [_tfIconView pop_addAnimation:decayAnimation forKey:@"decelerate"];
+    
+    [self addSubview:_tfIconView];
+    POPBasicAnimation *basicAniamtion = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    basicAniamtion.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    basicAniamtion.fromValue = @(_tfIconView.x);
+    basicAniamtion.toValue = @(self.width);
+    basicAniamtion.duration = 5;
+    basicAniamtion.beginTime = CACurrentMediaTime() + 1.f;
+    basicAniamtion.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        _displayLink.paused = YES;
+        NSLog(@"layer frame:%@", NSStringFromCGRect(_tfIconView.layer.frame));
+    };
+    [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
+    _displayLink.paused = NO;
+    
+    
+    
+    
+//    POPAnimatableProperty *prop1 = [POPAnimatableProperty propertyWithName:@"1" initializer:^(POPMutableAnimatableProperty *prop) {
+//        NSLog(@"--1");
+//        prop.writeBlock = ^(id obj, const CGFloat *values) {
+//            NSString *str = [NSString stringWithFormat:@"%d:%d:%d", (int)values[0]/60, (int)values[0]%60, (int)(values[0]*100)];
+//            NSLog(@"str:%@", str);
+//        };
+//        
+//        prop.readBlock = ^(id obj, CGFloat *values) {
+//            NSLog(@"--2");
+//        };
+//        prop.threshold = 0.01;
+//    }];
+//    
+//    POPBasicAnimation *countDownAnimation = [POPBasicAnimation linearAnimation];
+//    countDownAnimation.property = prop1;
+//    countDownAnimation.fromValue = @(0);
+//    countDownAnimation.toValue = @(1 * 20);
+//    countDownAnimation.duration = 1 * 20;
+//    countDownAnimation.beginTime = CACurrentMediaTime() + 1.f;
+//    
+//    
+//    UILabel *label = [UILabel new];
+//    [self addSubview:label];
+//    [_tfIconView.layer pop_addAnimation:countDownAnimation forKey:kPOPLayerPositionX];
+    
+    
+    
+    
+    
+    
+}
+
+- (void)changeMaskWithX:(CGFloat)maskX
+{
+    if (!_maskPath) {
+        _maskPath = [UIBezierPath bezierPath];
+    }
+    [_maskPath moveToPoint:CGPointMake(maskX, 0)];
+    [_maskPath addLineToPoint:CGPointMake(self.width, 0)];
+    [_maskPath addLineToPoint:CGPointMake(self.width, self.height)];
+    [_maskPath addLineToPoint:CGPointMake(maskX, self.height)];
+    [_maskPath closePath];
+    
+    NSLog(@"--x:%f", maskX);
+    
+    if (!_maskLayer) {
+        _maskLayer = [CAShapeLayer layer];
+    }
+    _maskLayer.path = _maskPath.CGPath;
+    _mainContentView.layer.mask = _maskLayer;
 }
 
 #pragma mark - Setter & Getter
