@@ -65,22 +65,16 @@
 {
     __weak typeof(self) weakSelf = self;
     
+    [self insertNextMysteryTextFieldWithTrigger:NO];
     [self hideCurrentMysteryTextFieldAnimationCompletion:^{
-        [weakSelf showNextMysteryTextFieldAnimation];
+        [weakSelf nextMysteryTextFieldAutoSizeAnimationWithTrigger:YES];
     }];
 }
 
 - (void)hideCurrentMysteryTextFieldAnimationCompletion:(void (^)())completion
 {
     CRMysteryTextFiled *crTextFiledCurrent = [_seesawManager getObjectWithType:BearSeesawObjectTypeCurrent];
-    
-#warning DAD Test
-    [crTextFiledCurrent fadeOutAnimation];
-    return;
-    
-    [UIView animateWithDuration:2.0 animations:^{
-        [crTextFiledCurrent setX:self.width];
-    } completion:^(BOOL finished) {
+    [crTextFiledCurrent fadeOutAnimationCompletion:^{
         [crTextFiledCurrent removeFromSuperview];
         
         if (completion) {
@@ -89,7 +83,9 @@
     }];
 }
 
-- (void)showNextMysteryTextFieldAnimation
+
+#pragma mark - Next Mystery TextField
+- (void)insertNextMysteryTextFieldWithTrigger:(BOOL)haveTrigger
 {
     NSInteger tempCount = [_crMysteryTFModels count] - 1;
     if (_currentIndex < tempCount) {
@@ -105,19 +101,44 @@
             crTextFiled = [self generateMysteryTextFieldWithModel:_crMysteryTFModels[_currentIndex]];
         }
         
-        [self addSubview:crTextFiled];
+        [self insertSubview:crTextFiled atIndex:0];
         [crTextFiled setCurrentWidth:self.width];
         [crTextFiled BearSetCenterToParentViewWithAxis:kAXIS_X_Y];
         [_seesawManager setObject:crTextFiled withType:BearSeesawObjectTypeCurrent];
         
+    }else{
+        if (haveTrigger) {
+            if ([_delegate respondsToSelector:@selector(triggerNoNextEvent:)]) {
+                [_delegate triggerNoNextEvent:self];
+            }
+        }
+    }
+}
+
+- (void)nextMysteryTextFieldAutoSizeAnimationWithTrigger:(BOOL)haveTrigger
+{
+    NSInteger tempCount = [_crMysteryTFModels count] - 1;
+    if (_currentIndex < tempCount) {
+        [self nextMysteryTextFieldAnimation];
+    }else{
+        if (haveTrigger) {
+            if ([_delegate respondsToSelector:@selector(triggerNoNextEvent:)]) {
+                [_delegate triggerNoNextEvent:self];
+            }
+        }
+    }
+}
+
+- (void)nextMysteryTextFieldAnimation
+{
+    CRMysteryTextFiled *crTextFiled;
+    id tempObj = [_seesawManager getObjectWithType:BearSeesawObjectTypeCurrent];
+    if ([tempObj isKindOfClass:[CRMysteryTextFiled class]]) {
+        crTextFiled = tempObj;
+        
         [UIView animateWithDuration:0.25 animations:^{
             [crTextFiled setCurrentWidth:_minWidth];
         }];
-        
-    }else{
-        if ([_delegate respondsToSelector:@selector(triggerNoNextEvent:)]) {
-            [_delegate triggerNoNextEvent:self];
-        }
     }
 }
 
@@ -222,7 +243,8 @@
 - (void)reloadDataAndShowMysteryField
 {
     if (self.width == _minWidth) {
-        [self showNextMysteryTextFieldAnimation];
+        [self insertNextMysteryTextFieldWithTrigger:NO];
+        [self nextMysteryTextFieldAutoSizeAnimationWithTrigger:YES];
     }else{
         
         __weak typeof(self) weakSelf = self;
@@ -234,7 +256,8 @@
             }
             
         } completion:^(BOOL finished) {
-            [weakSelf showNextMysteryTextFieldAnimation];
+            [self insertNextMysteryTextFieldWithTrigger:NO];
+            [self nextMysteryTextFieldAutoSizeAnimationWithTrigger:YES];
         }];
         
     }

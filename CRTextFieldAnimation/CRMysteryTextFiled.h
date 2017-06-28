@@ -26,7 +26,7 @@
 
 - (instancetype)initWithMinFrame:(CGRect)frame maxWidth:(CGFloat)maxWidth;
 - (void)setCurrentWidth:(CGFloat)currentWidth;
-- (void)fadeOutAnimation;
+- (void)fadeOutAnimationCompletion:(void (^)())completion;
 
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;

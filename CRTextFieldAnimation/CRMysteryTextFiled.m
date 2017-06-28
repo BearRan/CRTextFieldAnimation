@@ -82,7 +82,10 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 
 - (void)createUI
 {
+    self.layer.masksToBounds = YES;
+    
     _mainContentView = [[UIView alloc] initWithFrame:self.bounds];
+    _mainContentView.backgroundColor = [UIColor orangeColor];
     _mainContentView.layer.masksToBounds = YES;
     [self addSubview:_mainContentView];
     
@@ -183,7 +186,6 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 
 - (void)displayLinkEvent
 {
-//    NSLog(@"--1 layer frame:%@", NSStringFromCGRect(_tfIconView.layer.frame));
     [self changeMaskWithX:_tfIconView.layer.frame.origin.x];
 }
 
@@ -223,7 +225,7 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
 }
  */
 
-- (void)fadeOutAnimation
+- (void)fadeOutAnimationCompletion:(void (^)())completion
 {
     
 //    POPDecayAnimation *decayAnimation = [POPDecayAnimation animation];
@@ -251,13 +253,18 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     [self addSubview:_tfIconView];
     POPBasicAnimation *basicAniamtion = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
     basicAniamtion.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    basicAniamtion.fromValue = @(_tfIconView.x);
-    basicAniamtion.toValue = @(self.width);
+    basicAniamtion.fromValue = @(_tfIconView.x + _tfIconView.width / 2.0);
+    basicAniamtion.toValue = @(self.width + _tfIconView.width / 2.0);
     basicAniamtion.duration = 5;
     basicAniamtion.beginTime = CACurrentMediaTime() + 1.f;
     basicAniamtion.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         _displayLink.paused = YES;
-        NSLog(@"layer frame:%@", NSStringFromCGRect(_tfIconView.layer.frame));
+        [_mainContentView addSubview:_tfIconView];
+        [_tfIconView setX:0];
+        
+        if (completion) {
+            completion();
+        }
     };
     [_tfIconView.layer pop_addAnimation:basicAniamtion forKey:nil];
     _displayLink.paused = NO;
@@ -302,13 +309,12 @@ typedef NS_ENUM(NSInteger, CRTFCaculateType) {
     if (!_maskPath) {
         _maskPath = [UIBezierPath bezierPath];
     }
+    [_maskPath removeAllPoints];
     [_maskPath moveToPoint:CGPointMake(maskX, 0)];
     [_maskPath addLineToPoint:CGPointMake(self.width, 0)];
     [_maskPath addLineToPoint:CGPointMake(self.width, self.height)];
     [_maskPath addLineToPoint:CGPointMake(maskX, self.height)];
     [_maskPath closePath];
-    
-    NSLog(@"--x:%f", maskX);
     
     if (!_maskLayer) {
         _maskLayer = [CAShapeLayer layer];
